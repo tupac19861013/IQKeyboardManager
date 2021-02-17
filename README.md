@@ -1,154 +1,214 @@
-IQKeyboardManager
-==========================
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/master/Demo/Resources/icon.png" alt="Icon"/>
+</p>
+<H1 align="center">IQKeyboardManager</H1>
+<p align="center">
+  <img src="https://img.shields.io/github/license/hackiftekhar/IQKeyboardManager.svg"
+  alt="GitHub license"/>
 
-Often while developing an app, We ran into an issues where the iPhone UIKeyboard slide up and cover the `UITextField/UITextView`.
 
-## Screen Shot
-[![image](./KeyboardTextFieldDemo/Screenshot/IQKeyboardManagerScreenshot.png)](http://youtu.be/6nhLw6hju2A)
+[![Build Status](https://travis-ci.org/hackiftekhar/IQKeyboardManager.svg)](https://travis-ci.org/hackiftekhar/IQKeyboardManager)
+
+
+While developing iOS apps, we often run into issues where the iPhone keyboard slides up and covers the `UITextField/UITextView`. `IQKeyboardManager` allows you to prevent this issue of keyboard sliding up and covering `UITextField/UITextView` without needing you to write any code or make any additional setup. To use `IQKeyboardManager` you simply need to add source files to your project.
+
+
+#### Key Features
+
+1) `**CODELESS**, Zero Lines of Code`
+
+2) `Works Automatically`
+
+3) `No More UIScrollView`
+
+4) `No More Subclasses`
+
+5) `No More Manual Work`
+
+6) `No More #imports`
+
+`IQKeyboardManager` works on all orientations, and with the toolbar. It also has nice optional features allowing you to customize the distance from the text field, behaviour of previous, next and done buttons in the keyboard toolbar, play sound when the user navigates through the form and more.
+
+
+## Screenshot
+[![IQKeyboardManager](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManagerScreenshot.png)](http://youtu.be/6nhLw6hju2A)
+[![Settings](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManagerSettings.png)](http://youtu.be/6nhLw6hju2A)
+
+## GIF animation
+[![IQKeyboardManager](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManager.gif)](http://youtu.be/6nhLw6hju2A)
 
 ## Video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=6nhLw6hju2A
-" target="_blank"><img src="http://img.youtube.com/vi/6nhLw6hju2A/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+<a href="http://youtu.be/WAYc2Qj-OQg" target="_blank"><img src="http://img.youtube.com/vi/WAYc2Qj-OQg/0.jpg"
+alt="IQKeyboardManager Demo Video" width="480" height="360" border="10" /></a>
 
+## Tutorial video by @rebeloper ([#1135](https://github.com/hackiftekhar/IQKeyboardManager/issues/1135))
+
+@rebeloper demonstrated two videos on how to implement **IQKeyboardManager** at it's core:
+
+<a href="https://www.youtube.com/playlist?list=PL_csAAO9PQ8aTL87XnueOXi3RpWE2m_8v" target="_blank"><img src="https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/master/Screenshot/ThirdPartyYoutubeTutorial.jpg"
+alt="Youtube Tutorial Playlist"/></a>
+
+https://www.youtube.com/playlist?list=PL_csAAO9PQ8aTL87XnueOXi3RpWE2m_8v
+
+## Warning
+
+- **If you're planning to build SDK/library/framework and want to handle UITextField/UITextView with IQKeyboardManager then you're totally going the wrong way.** I would never suggest to add **IQKeyboardManager** as **dependency/adding/shipping** with any third-party library. Instead of adding **IQKeyboardManager** you should implement your own solution to achieve same kind of results. **IQKeyboardManager** is totally designed for projects to help developers for their convenience, it's not designed for **adding/dependency/shipping** with any **third-party library**, because **doing this could block adoption by other developers for their projects as well (who are not using IQKeyboardManager and have implemented their custom solution to handle UITextField/UITextView in the project).**
+- If **IQKeyboardManager** conflicts with other **third-party library**, then it's **developer responsibility** to **enable/disable IQKeyboardManager** when **presenting/dismissing** third-party library UI. Third-party libraries are not responsible to handle IQKeyboardManager.
+
+## Requirements
+[![Platform iOS](https://img.shields.io/badge/Platform-iOS-blue.svg?style=fla)]()
+
+|                        | Language | Minimum iOS Target | Minimum Xcode Version |
+|------------------------|----------|--------------------|-----------------------|
+| IQKeyboardManager      | Obj-C    | iOS 8.0            | Xcode 9           |
+| IQKeyboardManagerSwift | Swift    | iOS 8.0            | Xcode 9           |
+| Demo Project           |          |                    | Xcode 11             |
+
+#### Swift versions support
+
+| Swift             | Xcode | IQKeyboardManagerSwift |
+|-------------------|-------|------------------------|
+| 5.1, 5.0, 4.2, 4.0, 3.2, 3.0| 11  | >= 6.5.0               |
+| 5.0,4.2, 4.0, 3.2, 3.0| 10.2  | >= 6.2.1               |
+| 4.2, 4.0, 3.2, 3.0| 10.0  | >= 6.0.4               |
+| 4.0, 3.2, 3.0     | 9.0   | 5.0.0                  |
 
 Installation
 ==========================
 
-Cocoapod
----
-IQKeyboardManager is available through [CocoaPods](http://cocoapods.org), to install
-it simply add the following line to your Podfile:
+#### Installation with CocoaPods
 
-    pod 'IQKeyboardManager'
+[![CocoaPods](https://img.shields.io/cocoapods/v/IQKeyboardManager.svg)](http://cocoadocs.org/docsets/IQKeyboardManager)
 
-Framework:-
----
-Link your project against `KeyboardManager.framework` found in "IQKeyboardManager Framework" directory. Drag and drop the resource bundle `IQKeyboardManager.bundle` found in same directory. add `-ObjC` flag in `other linker flag`. That's it. No need to write any single line of code.
+***IQKeyboardManager (Objective-C):*** IQKeyboardManager is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile: ([#9](https://github.com/hackiftekhar/IQKeyboardManager/issues/9))
 
-Source Code:-
----
-Just drag and drop `IQKeyBoardManager` directory from demo project to your project. That's it. No need to write any single line of code. It will enable automatically.
-
-Manual Management:-
----
-
-#### UINavigationBar:-
-
-1) If you don't want to hide the default UINavigationBar of UINavigationController when keyboardManager slides up the view, then just change the UIView class to UIScrollView from the storyboard or xib.
-
-#### UIToolbar(IQToolbar):-
-
-1) If you don't want to add automatic toolbar over keyboard for a specific textField then you should add a UIView as it's toolbar like this:-
-```
-textField.inputAccessoryView = [[UIView alloc] init];
+```ruby
+pod 'IQKeyboardManager' #iOS8 and later
 ```
 
-2) If you need your own control over the previous/next/done button then you should use the UIView category methods to add toolbar over your textField. The UIView category methods are defined in `IQUIView+IQKeyboardToolbar.h` file. You can use them like this:-
-```
--(void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //Adding done button for textField1
-    [textField1 addDoneOnKeyboardWithTarget:self action:@selector(doneAction:)];
-    
-    //Adding previous/next/done button for textField2
-    [textField2 addPreviousNextDoneOnKeyboardWithTarget:self previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) doneAction:@selector(doneAction:)];
-    
-    //Adding cancel/done button for textField3
-    [textField3 addCancelDoneOnKeyboardWithTarget:self cancelAction:@selector(cancelAction:) doneAction:@selector(doneAction:)];
-}
+***IQKeyboardManager (Swift):*** IQKeyboardManagerSwift is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile: ([#236](https://github.com/hackiftekhar/IQKeyboardManager/issues/236))
 
-/*!	previousAction. */
--(void)previousAction:(id)button
-{
-    //previousAction
-}
+*Swift 5.1, 5.0, 4.2, 4.0, 3.2, 3.0 (Xcode 11)*
 
-/*!	nextAction. */
--(void)nextAction:(id)button
-{
-    //nextAction
-}
-
-/*!	doneAction. */
--(void)doneAction:(UIBarButtonItem*)barButton
-{
-    //doneAction
-}
-
-/*!	cancelAction. */
--(void)cancelAction:(UIBarButtonItem*)barButton
-{
-    //cancelAction
-}
-
+```ruby
+pod 'IQKeyboardManagerSwift'
 ```
 
-Properties and functions usage:-
----
-1)	`+sharedManager`
-Returns the default singleton instance.
+*Or you can choose the version you need based on Swift support table from [Requirements](README.md#requirements)*
 
-2)	`enable`
-Use this to enable/disable managing distance between keyboard & textField/textView).
+```ruby
+pod 'IQKeyboardManagerSwift', '6.3.0'
+```
 
-3)	`keyboardDistanceFromTextField`
-Set Distance between keyboard & textField. Can't be less than zero. Default is 10.
+In AppDelegate.swift, just import IQKeyboardManagerSwift framework and enable IQKeyboardManager.
 
-4)	`enableAutoToolbar`
-Enable autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard. Default is YES.
+```swift
+import IQKeyboardManagerSwift
 
-5)	`canAdjustTextView`
-Giving permission to modify TextView's frame. Adjust textView's frame when it is too big in height. Default is NO.
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-6)	`shouldResignOnTouchOutside`
-Resign textField if touched outside of UITextField/UITextView.
+    var window: UIWindow?
 
-7)	`shouldShowTextFieldPlaceholder`
-If YES, then it add the textField's placeholder text on IQToolbar. Default is YES.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-8)	`shouldPlayInputClicks`
-If YES, then it plays inputClick sound on next/previous/done click. Default is NO.
+      IQKeyboardManager.shared.enable = true
 
-9)	`toolbarUsesCurrentWindowTintColor`
-If YES, then uses textField's tintColor property for IQToolbar, otherwise tintColor is black. Default is NO.
+      return true
+    }
+}
+```
 
-10)	`toolbarManageStyle`
-Setting toolbar behaviour to IQAutoToolbarBySubviews to manage previous/next according to UITextField's hierarchy in it's SuperView. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order. Default is IQAutoToolbarBySubviews.
+#### Installation with Carthage
 
-11)	`-resignFirstResponder`
-Resigns currently first responder field.
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate `IQKeyboardManger` or `IQKeyboardManagerSwift` into your Xcode project using Carthage, add the following line to your `Cartfile`:
+
+```ogdl
+github "hackiftekhar/IQKeyboardManager"
+```
+
+Run `carthage` to build the frameworks and drag the appropriate framework (`IQKeyboardManager.framework` or `IQKeyboardManagerSwift.framework`) into your Xcode project based on your need. Make sure to add only one framework and not both.
+
+
+#### Installation with Source Code
+
+[![Github tag](https://img.shields.io/github/tag/hackiftekhar/iqkeyboardmanager.svg)]()
 
 
 
-## Feature:-
+***IQKeyboardManager (Objective-C):*** Just ***drag and drop*** `IQKeyboardManager` directory from demo project to your project. That's it.
 
- 1) Support Device Orientation.
- 
- 2) Enable/Disable Keyboard Manager when needed with `enable` boolean.
+***IQKeyboardManager (Swift):*** ***Drag and drop*** `IQKeyboardManagerSwift` directory from demo project to your project
 
- 3) Easiest integration.
+In AppDelegate.swift, just enable IQKeyboardManager.
 
- 4) AutoHandle UIToolbar as a accessoryInputView of textField/textView with `enableAutoToolbar` boolean.
+```swift
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
- 5) AutoHandle UIToolbar can be manged by superview's hierarchy or can be managed by tag property of textField/textView using `toolbarManageBehaviour` enum.
+    var window: UIWindow?
 
- 6) `UIView` Category for easily adding Next/Previous and Done button as Keyboard UIToolBar, even automatic with `enableAutoToolbar` boolean.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
- 7) Enable/Disable Next/Previous buttons with Category methods, even automatic with `enableAutoToolbar` boolean.
+      IQKeyboardManager.shared.enable = true
 
- 8) Set keyboard distance from textFields using `keyboardDistanceFromTextField`.
- 
- 9) Resign keyboard on touching outside using `shouldResignOnTouchOutside`.
- 
- 10) Manage UITextView's frame when it's hight is too large to fit on screen with `canAdjustTextView` boolean.
- 
- 11) Can manage `UITextField/UITextView` inside `UITableView/UIScrollView`.
- 
- 12) Can play input sound on Next/Previous/Done click.
+      return true
+    }
+}
+```
+
+#### Installation with Swift Package Manager
+
+[Swift Package Manager(SPM)](https://swift.org/package-manager/) is Apple's dependency manager tool. It is now supported in Xcode 11. So it can be used in all appleOS types of projects. It can be used alongside other tools like CocoaPods and Carthage as well. 
+
+To install IQKeyboardManager package into your packages, add a reference to IQKeyboardManager and a targeting release version in the dependencies section in `Package.swift` file:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    products: [],
+    dependencies: [
+        .package(url: "https://github.com/hackiftekhar/IQKeyboardManager.git", from: "6.5.0")
+    ]
+)
+```
+
+To install IQKeyboardManager package via Xcode
+
+ * Go to File -> Swift Packages -> Add Package Dependency...
+ * Then search for https://github.com/hackiftekhar/IQKeyboardManager.git
+ * And choose the version you want
+
+Migration Guide
+==========================
+- [IQKeyboardManager 6.0.0 Migration Guide](https://github.com/hackiftekhar/IQKeyboardManager/wiki/IQKeyboardManager-6.0.0-Migration-Guide)
+
+Other Links
+==========================
+
+- [Known Issues](https://github.com/hackiftekhar/IQKeyboardManager/wiki/Known-Issues)
+- [Manual Management Tweaks](https://github.com/hackiftekhar/IQKeyboardManager/wiki/Manual-Management)
+- [Properties and functions usage](https://github.com/hackiftekhar/IQKeyboardManager/wiki/Properties-&-Functions)
+
+## Flow Diagram
+[![IQKeyboardManager CFD](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/master/Screenshot/IQKeyboardManagerFlowDiagram.jpg)](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/master/Screenshot/IQKeyboardManagerFlowDiagram.jpg)
+
+If you would like to see detailed Flow diagram then check [Detailed Flow Diagram](https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManagerCFD.jpg).
+
 
 LICENSE
 ---
@@ -161,4 +221,3 @@ Any contribution is more than welcome! You can contribute through pull requests 
 Author
 ---
 If you wish to contact me, email at: hack.iftekhar@gmail.com
-

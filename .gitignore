@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-.DS_Store
-xcuserdata
-=======
 # Xcode
-.DS_Store
 build/
 *.pbxuser
 !default.pbxuser
@@ -13,11 +8,32 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
-profile
+*.xccheckout
 *.moved-aside
 DerivedData
-.idea/
->>>>>>> 131c6c6f9579ae41a823c2fe208b11ccf4a3a7ac
+*.hmap
+*.ipa
+*.xcuserstate
+
+#CocoaPods
+Pods/
+
+# MacOS X
+.DS_Store
+*.DS_Store
+**/.DS_Store
+
+#Swift Package Manager
+.build
+/.previous-build
+*~
+\#*
+.\#*
+*.xcscmblueprint
+/default.profraw
+Utilities/Docker/*.tar.gz
+.swiftpm
+Packages/
+Package.pins
+Package.resolved
